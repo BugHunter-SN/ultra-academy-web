@@ -11,7 +11,7 @@
     />
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap");
 
       :root {
         --orange: #ff6600;
@@ -23,8 +23,90 @@
 
       .hero-bg {
         background:
-          linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+          linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)),
           url("./images/Hero-image-1.jpeg") center/cover no-repeat;
+      }
+
+      /* ── Hero typewriter-style animated underline on key phrase ── */
+      .hero-accent {
+        position: relative;
+        display: inline-block;
+        color: #ff8833;
+      }
+      .hero-accent::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 3px;
+        background: #ff6600;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: underlineGrow 1s 0.6s ease forwards;
+      }
+      @keyframes underlineGrow {
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      /* ── Fade-up entrance for hero children ── */
+      .hero-fade {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: fadeUp 0.7s ease forwards;
+      }
+      .hero-fade:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .hero-fade:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .hero-fade:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .hero-fade:nth-child(4) {
+        animation-delay: 0.55s;
+      }
+      .hero-fade:nth-child(5) {
+        animation-delay: 0.7s;
+      }
+      .hero-fade:nth-child(6) {
+        animation-delay: 0.85s;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── Divider pill ── */
+      .hero-divider {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        font-weight: 500;
+        color: #e5e7eb;
+      }
+
+      /* ── Stat cards ── */
+      .stat-card {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(6px);
+        border-radius: 16px;
+        padding: 16px 12px;
+        text-align: center;
       }
 
       .course-card {
@@ -63,20 +145,17 @@
         box-shadow: 0 10px 15px -3px rgb(255 102 0 / 0.4);
       }
 
-      /* Course card banner — consistent height for all cards */
       .card-banner {
-        height: 192px; /* h-48 equivalent */
+        height: 192px;
         overflow: hidden;
         flex-shrink: 0;
       }
-      /* Image fills the banner exactly */
       .card-banner img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
-      /* Icon-only banner (gradient) */
       .card-banner-icon {
         width: 100%;
         height: 100%;
@@ -225,58 +304,87 @@
       class="hero-bg text-white min-h-screen flex items-center"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 w-full">
-        <div class="max-w-2xl">
-          <div
-            class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6"
-          >
+        <div class="max-w-3xl">
+          <!-- Location pill -->
+          <div class="hero-fade hero-divider mb-6 w-fit">
             <span
-              class="bg-green-400 w-2 h-2 rounded-full animate-pulse"
+              class="bg-green-400 w-2 h-2 rounded-full animate-pulse inline-block"
             ></span>
-            <span class="text-sm font-medium">Monrovia, Liberia</span>
+            Monrovia, Liberia &nbsp;·&nbsp; Est. 2025
           </div>
 
+          <!-- Main headline — official tagline -->
           <h1
-            class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+            class="hero-fade text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4"
           >
-            Professional Skills for<br />Liberia's Future
+            Professional Skills for<br />
+            <span class="hero-accent">Liberia's Future</span>
           </h1>
-          <p class="text-lg sm:text-xl text-gray-200 mb-8 sm:mb-10">
-            Industry-recognized certificate programs in Business and Information
-            Technology. Hands-on training. Expert instructors. Career-ready
-            graduates.
+
+          <!-- Sub-tagline — your original phrase, elegantly placed -->
+          <p
+            class="hero-fade text-base sm:text-lg text-orange-300 font-semibold tracking-wide mb-5 uppercase"
+          >
+            Gain · Improve · Produce
           </p>
 
-          <div class="flex flex-wrap gap-3 sm:gap-4">
+          <!-- Official body copy -->
+          <p
+            class="hero-fade text-base sm:text-lg md:text-xl text-gray-200 mb-4 leading-relaxed max-w-2xl"
+          >
+            Industry-recognized certificate programs in
+            <strong class="text-white">Business</strong> and
+            <strong class="text-white">Information Technology</strong> —
+            hands-on training, expert instructors, and career-ready graduates.
+          </p>
+
+          <!-- Secondary line from your original copy -->
+          <p
+            class="hero-fade text-sm sm:text-base text-gray-400 mb-10 max-w-xl"
+          >
+            Unlock your potential with Ultra Academy's professional development
+            training programs — built for Liberia's growing economy.
+          </p>
+
+          <!-- CTA buttons -->
+          <div class="hero-fade flex flex-wrap gap-3 sm:gap-4 mb-12 sm:mb-16">
             <button
               onclick="navigateTo('courses')"
-              class="px-6 sm:px-8 py-3 sm:py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-base sm:text-lg"
+              class="px-6 sm:px-8 py-3 sm:py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-base sm:text-lg transition-all"
             >
               Browse Courses <i class="fas fa-arrow-right"></i>
             </button>
             <button
               onclick="showEnrollModal()"
-              class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white font-semibold rounded-2xl hover:bg-white/10 text-base sm:text-lg"
+              class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/70 font-semibold rounded-2xl hover:bg-white/10 hover:border-white flex items-center gap-3 text-base sm:text-lg transition-all"
             >
-              Start Your Journey
+              <i class="fas fa-graduation-cap"></i> Start Your Journey
             </button>
           </div>
 
-          <div class="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-6">
-            <div>
-              <div class="text-3xl sm:text-4xl font-bold">50+</div>
-              <div class="text-xs sm:text-sm text-gray-300">
+          <!-- Stats row -->
+          <div class="hero-fade grid grid-cols-3 gap-3 sm:gap-5 max-w-lg">
+            <div class="stat-card">
+              <div class="text-2xl sm:text-4xl font-bold text-white">50+</div>
+              <div
+                class="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight"
+              >
                 Certified Graduates
               </div>
             </div>
-            <div>
-              <div class="text-3xl sm:text-4xl font-bold">12+</div>
-              <div class="text-xs sm:text-sm text-gray-300">
+            <div class="stat-card">
+              <div class="text-2xl sm:text-4xl font-bold text-white">12+</div>
+              <div
+                class="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight"
+              >
                 Professional Programs
               </div>
             </div>
-            <div>
-              <div class="text-3xl sm:text-4xl font-bold">98%</div>
-              <div class="text-xs sm:text-sm text-gray-300">
+            <div class="stat-card">
+              <div class="text-2xl sm:text-4xl font-bold text-white">98%</div>
+              <div
+                class="text-[10px] sm:text-xs text-gray-300 mt-1 leading-tight"
+              >
                 Employment Rate
               </div>
             </div>
@@ -594,15 +702,17 @@
               class="h-10 w-auto object-contain"
             />
           </div>
-          <p class="text-gray-400">
-            Building Liberia's next generation of professionals. Gain, improve
-            and produce.
+          <p class="text-gray-400 text-sm">
+            Building Liberia's next generation of professionals.<br /><span
+              class="text-orange-400 font-medium"
+              >Gain · Improve · Produce.</span
+            >
           </p>
         </div>
 
         <div>
           <h4 class="font-semibold mb-5">Quick Links</h4>
-          <ul class="space-y-3 text-gray-400">
+          <ul class="space-y-3 text-gray-400 text-sm">
             <li><a href="#" class="hover:text-white">Admissions</a></li>
             <li><a href="#" class="hover:text-white">Scholarships</a></li>
             <li><a href="#" class="hover:text-white">Alumni Network</a></li>
@@ -612,7 +722,7 @@
 
         <div>
           <h4 class="font-semibold mb-5">Programs</h4>
-          <ul class="space-y-3 text-gray-400">
+          <ul class="space-y-3 text-gray-400 text-sm">
             <li>
               <a
                 href="#courses"
