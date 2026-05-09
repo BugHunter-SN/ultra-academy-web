@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultra Academy Liberia | Professional Certificates Programs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap");
+
+      :root {
+        --orange: #ff6600;
+      }
+
+      .tail-container {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+          url("./images/Hero-image-1.jpeg") center/cover no-repeat;
+      }
+
+      .course-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -ms-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .course-card:hover {
+        transform: translateY(-12px);
+        box-shadow:
+          0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #ff6600;
+        transition: all 0.3s;
+      }
+
+      .nav-link:hover:after {
+        width: 100%;
+      }
+
+      .orange-button {
+        background: linear-gradient(135deg, #ff6600, #ff8833);
+        transition: all 0.3s;
+      }
+
+      .orange-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgb(255 102 0 / 0.4);
+      }
+    </style>
+  </head>
+
+  <body class="tail-container bg-white text-gray-900">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src="./images/ua-ogo.jpeg"
+            alt="ultra-logo"
+            class="w-18 h-12 rounded object-cover"
+          />
+
+          <div>
+            <span class="text-2xl font-bold tracking-tight">Ultra Academy</span>
+            <span class="text-xs block -mt-1 text-orange-600 font-medium"
+              >LIBERIA</span
+            >
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a
+            href="#home"
+            onclick="navigateTo('home')"
+            class="nav-link text-gray-700 hover:text-orange-600"
+            >Home</a
+          >
+          <a
+            href="#about"
+            onclick="navigateTo('about')"
+            class="nav-link text-gray-700 hover:text-orange-600"
+            >About</a
+          >
+          <a
+            href="#courses"
+            onclick="navigateTo('courses')"
+            class="nav-link text-gray-700 hover:text-orange-600"
+            >Courses</a
+          >
+          <a
+            href="#gallery"
+            onclick="navigateTo('courses')"
+            class="nav-link text-gray-700 hover:text-orange-600"
+            >Gallery</a
+          >
+          <a
+            href="#contact"
+            onclick="navigateTo('contact')"
+            class="nav-link text-gray-700 hover:text-orange-600"
+            >Contact</a
+          >
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button
+            onclick="showEnrollModal()"
+            class="px-6 py-2.5 text-sm font-semibold text-white orange-button rounded-full flex items-center gap-2"
+          >
+            <i class="fas fa-graduation-cap"></i>
+            Enroll Now
+          </button>
+          <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+        <div class="px-6 py-8 flex flex-col gap-6 text-lg">
+          <a
+            href="#home"
+            onclick="
+              navigateTo('home');
+              toggleMobileMenu();
+            "
+            class="hover:text-orange-600"
+            >Home</a
+          >
+          <a
+            href="#about"
+            onclick="
+              navigateTo('about');
+              toggleMobileMenu();
+            "
+            class="hover:text-orange-600"
+            >About Us</a
+          >
+          <a
+            href="#courses"
+            onclick="
+              navigateTo('courses');
+              toggleMobileMenu();
+            "
+            class="hover:text-orange-600"
+            >Programs</a
+          >
+          <a
+            href="#contact"
+            onclick="
+              navigateTo('contact');
+              toggleMobileMenu();
+            "
+            class="hover:text-orange-600"
+            >Contact</a
+          >
+          <button
+            onclick="
+              showEnrollModal();
+              toggleMobileMenu();
+            "
+            class="mt-4 w-full py-4 bg-orange-600 text-white rounded-2xl font-semibold"
+          >
+            Enroll Today
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <section
+      id="home"
+      class="hero-bg text-white min-h-screen flex items-center"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-24">
+        <div class="max-w-2xl">
+          <div
+            class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6"
+          >
+            <span
+              class="bg-green-400 w-2 h-2 rounded-full animate-pulse"
+            ></span>
+            <span class="text-sm font-medium">Monrovia, Liberia</span>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            Professional Skills for<br />Liberia's Future
+          </h1>
+          <p class="text-xl text-gray-200 mb-10">
+            Industry-recognized certificate programs in Business and Information
+            Technology. Hands-on training. Expert instructors. Career-ready
+            graduates.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <button
+              onclick="navigateTo('courses')"
+              class="px-8 py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-lg"
+            >
+              Browse Courses
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <button
+              onclick="showEnrollModal()"
+              class="px-8 py-4 border-2 border-white font-semibold rounded-2xl hover:bg-white/10 flex items-center gap-3 text-lg"
+            >
+              Start Your Journey
+            </button>
+          </div>
+
+          <div class="mt-16 grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-4xl font-bold">50+</div>
+              <div class="text-sm text-gray-300">Certified Graduates</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold">12+</div>
+              <div class="text-sm text-gray-300">Professional Programs</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold">98%</div>
+              <div class="text-sm text-gray-300">Employment Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <span
+              class="inline-block px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4"
+              >EST. 2025</span
+            >
+            <h2 class="text-4xl font-bold mb-6">
+              Empowering Liberian Professionals
+            </h2>
+            <p class="text-lg text-gray-600 mb-8">
+              Ultra Academy Liberia is a premier vocational institution
+              dedicated to bridging the skills gap in Liberia's growing economy.
+              We provide practical, industry-aligned training in Business and
+              IT.
+            </p>
+
+            <div class="space-y-8">
+              <div class="flex gap-6">
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i
+                    class="fas fa-chalkboard-teacher text-2xl text-orange-600"
+                  ></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl">Expert Faculty</h4>
+                  <p class="text-gray-600">
+                    Instructors with real-world industry experience
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6">
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="fas fa-laptop-code text-2xl text-orange-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl">Hands-on Learning</h4>
+                  <p class="text-gray-600">
+                    Modern labs and project-based curriculum
+                  </p>
+                </div>
+              </div>
+              <div class="flex gap-6">
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
+                >
+                  <i class="fas fa-briefcase text-2xl text-orange-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-xl">Career Support</h4>
+                  <p class="text-gray-600">
+                    Internships and job placement assistance
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl shadow-xl">
+            <img
+              src="./images/certification-sample.jpeg"
+              alt="Ultra Academy Campus"
+              class="rounded-2xl w-full shadow-md"
+            />
+            <div class="mt-8 grid grid-cols-2 gap-6 text-center">
+              <div class="border-r">
+                <div class="text-3xl font-bold text-orange-600">6</div>
+                <div class="text-sm uppercase tracking-widest">
+                  Months Avg Duration
+                </div>
+              </div>
+              <div>
+                <div class="text-3xl font-bold text-orange-600">24/7</div>
+                <div class="text-sm uppercase tracking-widest">
+                  Learning Support
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section id="courses" class="py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-4">
+            Our Professional Certificate Programs
+          </h2>
+          <p class="max-w-md mx-auto text-gray-600">
+            Choose from Business or IT tracks. All programs are 10-12 weeks long
+            with flexible schedules.
+          </p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex bg-gray-100 rounded-3xl p-1">
+            <button
+              onclick="filterCategory('all')"
+              id="tab-all"
+              class="tab-button active px-8 py-3 rounded-3xl font-medium"
+            >
+              All Programs
+            </button>
+            <button
+              onclick="filterCategory('it')"
+              id="tab-it"
+              class="tab-button px-8 py-3 rounded-3xl font-medium"
+            >
+              Information Technology
+            </button>
+            <button
+              onclick="filterCategory('business')"
+              id="tab-business"
+              class="tab-button px-8 py-3 rounded-3xl font-medium"
+            >
+              Business &amp; Management
+            </button>
+          </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div id="coursesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="bg-black text-white py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-3xl font-bold mb-12">
+          What Our Students Say
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-zinc-900 p-8 rounded-3xl">
+            <p class="italic mb-6">
+              "The Website Development course gave me the confidence to start my
+              own freelancing business. Ultra Academy changed my life!"
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div>
+                <div class="font-medium">Fatima K. Kamara</div>
+                <div class="text-xs text-gray-400">
+                  Class of 2025 • IT Graduate
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-zinc-900 p-8 rounded-3xl">
+            <p class="italic mb-6">
+              "Project Management certification helped me secure a role at a
+              major NGO in Monrovia. Highly recommended!"
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div>
+                <div class="font-medium">James T. Doe</div>
+                <div class="text-xs text-gray-400">
+                  Class of 2025 • Business Graduate
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-zinc-900 p-8 rounded-3xl">
+            <p class="italic mb-6">
+              "The instructors are industry experts. I learned Digital Marketing
+              and now manage social media for local businesses."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div>
+                <div class="font-medium">Aisha M. Johnson</div>
+                <div class="text-xs text-gray-400">Class of 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16">
+          <div>
+            <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
+            <div class="space-y-8">
+              <div class="flex gap-4">
+                <i
+                  class="fas fa-map-marker-alt text-3xl text-orange-500 mt-1"
+                ></i>
+                <div>
+                  <div class="font-medium">5th Street, Sinkor</div>
+                  <div class="text-gray-600">
+                    Tubman Boulevard Monrovia, Liberia
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <i class="fas fa-phone text-3xl text-orange-500 mt-1"></i>
+                <div>
+                  <div class="font-medium">+231 77 537 9265</div>
+                  <div class="text-gray-600">Mon - sat, 8am - 5pm</div>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <i class="fas fa-envelope text-3xl text-orange-500 mt-1"></i>
+                <div>
+                  <div class="font-medium">ultraacademy17@gmail.com</div>
+                  <div class="text-gray-600">Admissions &amp; Inquiries</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form id="contactForm" class="bg-white p-10 rounded-3xl shadow">
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm mb-2 font-medium">First Name</label>
+                <input
+                  type="text"
+                  class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm mb-2 font-medium">Last Name</label>
+                <input
+                  type="text"
+                  class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mt-6">
+              <label class="block text-sm mb-2 font-medium">Email</label>
+              <input
+                type="email"
+                class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                required
+              />
+            </div>
+            <div class="mt-6">
+              <label class="block text-sm mb-2 font-medium"
+                >Interested Program</label
+              >
+              <select
+                class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+              >
+                <option>Website Development</option>
+                <option>Digital Marketing</option>
+                <option>Project Management</option>
+                <option>Human Resource Management</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              class="mt-10 w-full py-5 bg-black text-white rounded-3xl font-semibold hover:bg-orange-600 transition-colors"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-16">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <img
+              src="./images/ua-ogo.jpeg"
+              alt="ultra-logo"
+              class="w-28 h-12 object-cover"
+            />
+          </div>
+          <p class="text-white-400">
+            Building Liberia's next generation of professionals. Gain, improve
+            and produce.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="#" class="hover:text-white">Admissions</a></li>
+            <li><a href="#" class="hover:text-white">Scholarships</a></li>
+            <li><a href="#" class="hover:text-white">Alumni Network</a></li>
+            <li><a href="#" class="hover:text-white">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-6">Programs</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li>
+              <a
+                href="#"
+                onclick="navigateTo('courses')"
+                class="hover:text-white"
+                >IT Programs</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="navigateTo('courses')"
+                class="hover:text-white"
+                >Business Programs</a
+              >
+            </li>
+            <li><a href="#" class="hover:text-white">Corporate Training</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-6">Connect</h4>
+          <div class="flex flex-col gap-4">
+            <a
+              href="https://web.facebook.com/profile.php?id=61576348242062"
+              target="_blank"
+              class="flex items-center gap-2 hover:text-orange-500"
+            >
+              <i class="fab fa-facebook text-xl"></i>
+              <span class="text-xs text-gray-400">Ultra Academy Liberia</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-2 hover:text-orange-500">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+
+            <a href="#" class="flex items-center gap-2 hover:text-orange-500">
+              <i class="fab fa-whatsapp text-xl"></i>
+              <span class="text-xs text-gray-400">+23177 537 9265</span>
+            </a>
+          </div>
+          <p class="mt-8 text-xs text-gray-500">
+            © 2026 Ultra Academy Liberia. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- COURSE DETAIL MODAL -->
+    <div
+      id="courseModal"
+      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]"
+    >
+      <div class="bg-white max-w-2xl w-full mx-4 rounded-3xl overflow-hidden">
+        <div class="p-8">
+          <div class="flex justify-between items-start">
+            <div>
+              <span
+                id="modalCategory"
+                class="px-4 py-1 text-xs font-medium bg-orange-100 text-orange-700 rounded-full"
+              ></span>
+              <h3 id="modalTitle" class="text-3xl font-bold mt-4"></h3>
+            </div>
+            <button
+              onclick="closeModal()"
+              class="text-4xl leading-none text-gray-400 hover:text-black"
+            >
+              ×
+            </button>
+          </div>
+
+          <div
+            id="modalDescription"
+            class="mt-8 text-gray-600 leading-relaxed"
+          ></div>
+
+          <div class="grid grid-cols-3 gap-6 my-10 text-center">
+            <div>
+              <div class="text-orange-600 font-mono text-2xl font-bold">12</div>
+              <div class="text-xs uppercase">Weeks</div>
+            </div>
+            <div>
+              <div class="text-orange-600 font-mono text-2xl font-bold">3x</div>
+              <div class="text-xs uppercase">Per Week</div>
+            </div>
+            <div>
+              <div class="text-orange-600 font-mono text-2xl font-bold">
+                $80
+              </div>
+              <div class="text-xs uppercase">Tuition</div>
+            </div>
+          </div>
+
+          <button
+            onclick="enrollFromModal()"
+            class="w-full py-6 bg-orange-600 text-white rounded-3xl font-semibold text-lg"
+          >
+            Enroll in this Course
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENROLL MODAL -->
+    <div
+      id="enrollModal"
+      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]"
+    >
+      <div class="bg-white max-w-lg w-full mx-4 rounded-3xl p-10">
+        <h3 class="text-3xl font-bold text-center mb-8">
+          Start Your Application
+        </h3>
+        <form onsubmit="submitEnroll(event)">
+          <input
+            type="text"
+            id="enrollName"
+            placeholder="Full Name"
+            class="w-full mb-5 border rounded-2xl px-6 py-5"
+            required
+          />
+          <input
+            type="email"
+            id="enrollEmail"
+            placeholder="Email Address"
+            class="w-full mb-5 border rounded-2xl px-6 py-5"
+            required
+          />
+          <input
+            type="tel"
+            id="enrollPhone"
+            placeholder="Phone Number"
+            class="w-full mb-8 border rounded-2xl px-6 py-5"
+            required
+          />
+
+          <button
+            type="submit"
+            class="w-full py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl font-bold text-lg"
+          >
+            SUBMIT APPLICATION
+          </button>
+        </form>
+        <button onclick="hideEnrollModal()" class="mt-4 text-gray-500 w-full">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Tailwind script already included
+
+      const courses = [
+        {
+          id: 1,
+          title: "Computer Fundamentals",
+          category: "it",
+          description:
+            "Master the basics of computing, operating systems, and essential software tools for professional environments.",
+          icon: "fa-keyboard",
+        },
+        {
+          id: 2,
+          title: "Graphic Design",
+          category: "it",
+          description:
+            "Learn Adobe Photoshop, Illustrator, and design principles to create stunning visual content.",
+          icon: "fa-palette",
+        },
+        {
+          id: 3,
+          title: "Website Development",
+          category: "it",
+          description:
+            "Build modern, responsive websites using HTML, CSS, JavaScript, and WordPress.",
+          icon: "fa-globe",
+        },
+        {
+          id: 4,
+          title: "Digital Marketing",
+          category: "it",
+          description:
+            "Master SEO, social media advertising, content marketing, and Google Analytics.",
+          icon: "fa-chart-line",
+        },
+        {
+          id: 5,
+          title: "Programming with Java & Python",
+          category: "it",
+          description:
+            "Learn two of the most in-demand programming languages with practical projects.",
+          icon: "fa-code",
+        },
+        {
+          id: 6,
+          title: "Relational Database Management with SQL",
+          category: "it",
+          description:
+            "Design, implement, and manage databases using MySQL and PostgreSQL.",
+          icon: "fa-database",
+        },
+        {
+          id: 7,
+          title: "Data Analysis in Advanced Excel",
+          category: "it",
+          description:
+            "Advanced formulas, pivot tables, dashboards, and data visualization techniques.",
+          icon: "fa-file-excel",
+        },
+        {
+          id: 8,
+          title: "QuickBooks Essentials",
+          category: "it",
+          description:
+            "Learn accounting software for small and medium businesses.",
+          icon: "fa-calculator",
+        },
+        // Business Courses
+        {
+          id: 9,
+          title: "Project Management",
+          category: "business",
+          description:
+            "PMP-aligned training covering planning, execution, risk management and agile methodologies.",
+          icon: "fa-tasks",
+        },
+        {
+          id: 10,
+          title: "Entrepreneurship & Business Development",
+          category: "business",
+          description:
+            "Turn your business idea into a successful venture with practical guidance.",
+          icon: "fa-lightbulb",
+        },
+        {
+          id: 11,
+          title: "Financial Management",
+          category: "business",
+          description:
+            "Budgeting, financial reporting, investment analysis and cash flow management.",
+          icon: "fa-money-bill-wave",
+        },
+        {
+          id: 12,
+          title: "Human Resource Management",
+          category: "business",
+          description:
+            "Recruitment, performance management, labor law, and employee relations.",
+          icon: "fa-users",
+        },
+        {
+          id: 13,
+          title: "Procurement & Contract Management",
+          category: "business",
+          description:
+            "Strategic sourcing, supplier management, and contract negotiation skills.",
+          icon: "fa-handshake",
+        },
+        {
+          id: 14,
+          title: "Monitoring & Evaluation",
+          category: "business",
+          description:
+            "Framework design, data collection, and impact assessment for development projects.",
+          icon: "fa-chart-bar",
+        },
+      ];
+
+      function renderCourses(filteredCourses) {
+        const container = document.getElementById("coursesGrid");
+        container.innerHTML = "";
+
+        filteredCourses.forEach((course) => {
+          const cardHTML = `
+                    <div onclick="showCourseDetail(${course.id})" class="course-card bg-white border border-gray-100 rounded-3xl overflow-hidden cursor-pointer group">
+                        <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-6xl">
+                            <i class="fas ${course.icon}"></i>
+                        </div>
+                        <div class="p-7">
+                            <span class="uppercase text-[10px] tracking-widest font-mono ${course.category === "it" ? "text-blue-600" : "text-emerald-600"}">
+                                ${course.category === "it" ? "INFORMATION TECHNOLOGY" : "BUSINESS"}
+                            </span>
+                            <h4 class="font-semibold text-xl mt-2 mb-3 group-hover:text-orange-600 transition-colors">${course.title}</h4>
+                            <p class="text-gray-600 line-clamp-3 text-sm">${course.description}</p>
+                            <div class="mt-6 flex justify-between items-center">
+                                <span class="text-xs font-medium bg-gray-100 px-4 py-2 rounded-3xl">Certificate</span>
+                                <span class="text-orange-600 text-sm font-medium flex items-center gap-1">
+                                    Learn more <i class="fas fa-arrow-right text-xs"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+          container.innerHTML += cardHTML;
+        });
+      }
+
+      function filterCategory(cat) {
+        // Reset active states
+        document.querySelectorAll(".tab-button").forEach((btn) => {
+          btn.classList.remove("active", "bg-white", "shadow-sm");
+        });
+
+        if (cat === "all") {
+          document
+            .getElementById("tab-all")
+            .classList.add("active", "bg-white", "shadow-sm");
+          renderCourses(courses);
+        } else if (cat === "it") {
+          document
+            .getElementById("tab-it")
+            .classList.add("active", "bg-white", "shadow-sm");
+          renderCourses(courses.filter((c) => c.category === "it"));
+        } else if (cat === "business") {
+          document
+            .getElementById("tab-business")
+            .classList.add("active", "bg-white", "shadow-sm");
+          renderCourses(courses.filter((c) => c.category === "business"));
+        }
+      }
+
+      let currentCourse = null;
+
+      function showCourseDetail(id) {
+        currentCourse = courses.find((c) => c.id === id);
+        if (!currentCourse) return;
+
+        document.getElementById("modalTitle").textContent = currentCourse.title;
+        document.getElementById("modalCategory").textContent =
+          currentCourse.category === "it" ? "IT SKILLS" : "BUSINESS";
+        document.getElementById("modalDescription").innerHTML = `
+                <p>${currentCourse.description}</p>
+                <ul class="list-disc pl-5 mt-6 space-y-2 text-sm">
+                    <li>Duration: 3-6 months (part-time available)</li>
+                    <li>Weekly classes: 2 sessions</li>
+                    <li>Final capstone project</li>
+                    <li>Internship opportunities</li>
+                    <li>Industry-recognized certificate</li>
+                </ul>
+            `;
+        document.getElementById("courseModal").classList.remove("hidden");
+        document.getElementById("courseModal").classList.add("flex");
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("courseModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      function showEnrollModal() {
+        document.getElementById("enrollModal").classList.remove("hidden");
+        document.getElementById("enrollModal").classList.add("flex");
+      }
+
+      function hideEnrollModal() {
+        const modal = document.getElementById("enrollModal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      function enrollFromModal() {
+        closeModal();
+        setTimeout(() => {
+          showEnrollModal();
+        }, 600);
+      }
+
+      function submitEnroll(e) {
+        e.preventDefault();
+        alert(
+          "🎉 Application received! Our admissions team will contact you within 48 hours.",
+        );
+        hideEnrollModal();
+      }
+
+      function toggleMobileMenu() {
+        document.getElementById("mobileMenu").classList.toggle("hidden");
+      }
+
+      function navigateTo(section) {
+        document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Initialize
+      window.onload = function () {
+        renderCourses(courses);
+
+        // Form submission
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Thank you! We'll respond to your inquiry shortly.");
+            contactForm.reset();
+          });
+        }
+
+        // Keyboard escape support
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            const modals = document.querySelectorAll(
+              "#courseModal, #enrollModal",
+            );
+            modals.forEach((modal) => {
+              if (!modal.classList.contains("hidden")) {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+              }
+            });
+          }
+        });
+
+        console.log(
+          "%cUltra Academy Liberia website loaded successfully!",
+          "color: #FF6600; font-family: monospace",
+        );
+      };
+    </script>
+  </body>
+</html>
