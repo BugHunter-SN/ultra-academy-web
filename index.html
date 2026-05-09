@@ -11,7 +11,7 @@
     />
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap");
 
       :root {
         --orange: #ff6600;
@@ -29,12 +29,7 @@
 
       .course-card {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        -ms-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
       .course-card:hover {
         transform: translateY(-12px);
         box-shadow:
@@ -45,7 +40,6 @@
       .nav-link {
         position: relative;
       }
-
       .nav-link:after {
         content: "";
         position: absolute;
@@ -56,7 +50,6 @@
         background-color: #ff6600;
         transition: all 0.3s;
       }
-
       .nav-link:hover:after {
         width: 100%;
       }
@@ -65,36 +58,63 @@
         background: linear-gradient(135deg, #ff6600, #ff8833);
         transition: all 0.3s;
       }
-
       .orange-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 15px -3px rgb(255 102 0 / 0.4);
+      }
+
+      /* Course card banner — consistent height for all cards */
+      .card-banner {
+        height: 192px; /* h-48 equivalent */
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      /* Image fills the banner exactly */
+      .card-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* Icon-only banner (gradient) */
+      .card-banner-icon {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f97316, #f59e0b);
+        color: white;
+        font-size: 3.5rem;
       }
     </style>
   </head>
 
   <body class="tail-container bg-white text-gray-900">
-    <!-- NAVBAR -->
+    <!-- ══════════════════════════════ NAVBAR ══════════════════════════════ -->
     <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
       <div
-        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex justify-between items-center"
       >
         <div class="flex items-center gap-3">
           <img
             src="./images/ua-ogo.jpeg"
             alt="ultra-logo"
-            class="w-18 h-12 rounded object-cover"
+            class="h-10 sm:h-12 w-auto rounded object-contain"
           />
-
           <div>
-            <span class="text-2xl font-bold tracking-tight">Ultra Academy</span>
+            <span class="text-xl sm:text-2xl font-bold tracking-tight"
+              >Ultra Academy</span
+            >
             <span class="text-xs block -mt-1 text-orange-600 font-medium"
               >LIBERIA</span
             >
           </div>
         </div>
 
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <div
+          class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium"
+        >
           <a
             href="#home"
             onclick="navigateTo('home')"
@@ -121,7 +141,7 @@
           >
           <a
             href="#gallery"
-            onclick="navigateTo('courses')"
+            onclick="navigateTo('gallery')"
             class="nav-link text-gray-700 hover:text-orange-600"
             >Gallery</a
           >
@@ -133,15 +153,15 @@
           >
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
           <button
             onclick="showEnrollModal()"
-            class="px-6 py-2.5 text-sm font-semibold text-white orange-button rounded-full flex items-center gap-2"
+            class="px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-semibold text-white orange-button rounded-full flex items-center gap-2"
           >
             <i class="fas fa-graduation-cap"></i>
-            Enroll Now
+            <span>Enroll Now</span>
           </button>
-          <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+          <button onclick="toggleMobileMenu()" class="md:hidden text-2xl p-1">
             <i class="fas fa-bars"></i>
           </button>
         </div>
@@ -149,7 +169,7 @@
 
       <!-- Mobile Menu -->
       <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-        <div class="px-6 py-8 flex flex-col gap-6 text-lg">
+        <div class="px-6 py-8 flex flex-col gap-5 text-lg">
           <a
             href="#home"
             onclick="
@@ -199,12 +219,12 @@
       </div>
     </nav>
 
-    <!-- HOME PAGE -->
+    <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
     <section
       id="home"
       class="hero-bg text-white min-h-screen flex items-center"
     >
-      <div class="max-w-7xl mx-auto px-6 py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 w-full">
         <div class="max-w-2xl">
           <div
             class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6"
@@ -215,70 +235,76 @@
             <span class="text-sm font-medium">Monrovia, Liberia</span>
           </div>
 
-          <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+          >
             Professional Skills for<br />Liberia's Future
           </h1>
-          <p class="text-xl text-gray-200 mb-10">
+          <p class="text-lg sm:text-xl text-gray-200 mb-8 sm:mb-10">
             Industry-recognized certificate programs in Business and Information
             Technology. Hands-on training. Expert instructors. Career-ready
             graduates.
           </p>
 
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-3 sm:gap-4">
             <button
               onclick="navigateTo('courses')"
-              class="px-8 py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-lg"
+              class="px-6 sm:px-8 py-3 sm:py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-base sm:text-lg"
             >
-              Browse Courses
-              <i class="fas fa-arrow-right"></i>
+              Browse Courses <i class="fas fa-arrow-right"></i>
             </button>
             <button
               onclick="showEnrollModal()"
-              class="px-8 py-4 border-2 border-white font-semibold rounded-2xl hover:bg-white/10 flex items-center gap-3 text-lg"
+              class="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white font-semibold rounded-2xl hover:bg-white/10 text-base sm:text-lg"
             >
               Start Your Journey
             </button>
           </div>
 
-          <div class="mt-16 grid grid-cols-3 gap-6">
+          <div class="mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-6">
             <div>
-              <div class="text-4xl font-bold">50+</div>
-              <div class="text-sm text-gray-300">Certified Graduates</div>
+              <div class="text-3xl sm:text-4xl font-bold">50+</div>
+              <div class="text-xs sm:text-sm text-gray-300">
+                Certified Graduates
+              </div>
             </div>
             <div>
-              <div class="text-4xl font-bold">12+</div>
-              <div class="text-sm text-gray-300">Professional Programs</div>
+              <div class="text-3xl sm:text-4xl font-bold">12+</div>
+              <div class="text-xs sm:text-sm text-gray-300">
+                Professional Programs
+              </div>
             </div>
             <div>
-              <div class="text-4xl font-bold">98%</div>
-              <div class="text-sm text-gray-300">Employment Rate</div>
+              <div class="text-3xl sm:text-4xl font-bold">98%</div>
+              <div class="text-xs sm:text-sm text-gray-300">
+                Employment Rate
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-24 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+    <!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
+    <section id="about" class="py-16 md:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <span
               class="inline-block px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4"
               >EST. 2025</span
             >
-            <h2 class="text-4xl font-bold mb-6">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">
               Empowering Liberian Professionals
             </h2>
-            <p class="text-lg text-gray-600 mb-8">
+            <p class="text-base sm:text-lg text-gray-600 mb-8">
               Ultra Academy Liberia is a premier vocational institution
               dedicated to bridging the skills gap in Liberia's growing economy.
               We provide practical, industry-aligned training in Business and
               IT.
             </p>
-
-            <div class="space-y-8">
-              <div class="flex gap-6">
+            <div class="space-y-6 sm:space-y-8">
+              <div class="flex gap-5">
                 <div
                   class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
                 >
@@ -293,7 +319,7 @@
                   </p>
                 </div>
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-5">
                 <div
                   class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
                 >
@@ -306,7 +332,7 @@
                   </p>
                 </div>
               </div>
-              <div class="flex gap-6">
+              <div class="flex gap-5">
                 <div
                   class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0"
                 >
@@ -322,13 +348,13 @@
             </div>
           </div>
 
-          <div class="bg-white p-8 rounded-3xl shadow-xl">
+          <div class="bg-white p-5 sm:p-8 rounded-3xl shadow-xl">
             <img
               src="./images/certification-sample.jpeg"
               alt="Ultra Academy Campus"
-              class="rounded-2xl w-full shadow-md"
+              class="rounded-2xl w-full h-auto object-cover shadow-md"
             />
-            <div class="mt-8 grid grid-cols-2 gap-6 text-center">
+            <div class="mt-6 sm:mt-8 grid grid-cols-2 gap-6 text-center">
               <div class="border-r">
                 <div class="text-3xl font-bold text-orange-600">6</div>
                 <div class="text-sm uppercase tracking-widest">
@@ -347,40 +373,42 @@
       </div>
     </section>
 
-    <!-- COURSES SECTION -->
-    <section id="courses" class="py-24">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold mb-4">
+    <!-- ══════════════════════════════ COURSES ══════════════════════════════ -->
+    <section id="courses" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10 md:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">
             Our Professional Certificate Programs
           </h2>
           <p class="max-w-md mx-auto text-gray-600">
-            Choose from Business or IT tracks. All programs are 10-12 weeks long
+            Choose from Business or IT tracks. All programs are 10–12 weeks long
             with flexible schedules.
           </p>
         </div>
 
         <!-- Category Tabs -->
-        <div class="flex justify-center mb-12">
-          <div class="inline-flex bg-gray-100 rounded-3xl p-1">
+        <div class="flex justify-center mb-8 md:mb-12 overflow-x-auto pb-1">
+          <div
+            class="inline-flex bg-gray-100 rounded-3xl p-1 whitespace-nowrap"
+          >
             <button
               onclick="filterCategory('all')"
               id="tab-all"
-              class="tab-button active px-8 py-3 rounded-3xl font-medium"
+              class="tab-button active px-5 sm:px-8 py-2.5 sm:py-3 rounded-3xl font-medium text-sm sm:text-base"
             >
               All Programs
             </button>
             <button
               onclick="filterCategory('it')"
               id="tab-it"
-              class="tab-button px-8 py-3 rounded-3xl font-medium"
+              class="tab-button px-5 sm:px-8 py-2.5 sm:py-3 rounded-3xl font-medium text-sm sm:text-base"
             >
               Information Technology
             </button>
             <button
               onclick="filterCategory('business')"
               id="tab-business"
-              class="tab-button px-8 py-3 rounded-3xl font-medium"
+              class="tab-button px-5 sm:px-8 py-2.5 sm:py-3 rounded-3xl font-medium text-sm sm:text-base"
             >
               Business &amp; Management
             </button>
@@ -388,26 +416,31 @@
         </div>
 
         <!-- Courses Grid -->
-        <div id="coursesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          id="coursesGrid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
+        >
           <!-- Populated by JavaScript -->
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="bg-black text-white py-20">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-center text-3xl font-bold mb-12">
+    <!-- ══════════════════════════════ TESTIMONIALS ══════════════════════════════ -->
+    <section class="bg-black text-white py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 class="text-center text-2xl sm:text-3xl font-bold mb-8 md:mb-12">
           What Our Students Say
         </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-zinc-900 p-8 rounded-3xl">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+          <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
             <p class="italic mb-6">
               "The Website Development course gave me the confidence to start my
               own freelancing business. Ultra Academy changed my life!"
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div
+                class="w-10 h-10 bg-orange-500 rounded-full flex-shrink-0"
+              ></div>
               <div>
                 <div class="font-medium">Fatima K. Kamara</div>
                 <div class="text-xs text-gray-400">
@@ -416,13 +449,15 @@
               </div>
             </div>
           </div>
-          <div class="bg-zinc-900 p-8 rounded-3xl">
+          <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
             <p class="italic mb-6">
               "Project Management certification helped me secure a role at a
               major NGO in Monrovia. Highly recommended!"
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div
+                class="w-10 h-10 bg-orange-500 rounded-full flex-shrink-0"
+              ></div>
               <div>
                 <div class="font-medium">James T. Doe</div>
                 <div class="text-xs text-gray-400">
@@ -431,13 +466,15 @@
               </div>
             </div>
           </div>
-          <div class="bg-zinc-900 p-8 rounded-3xl">
+          <div class="bg-zinc-900 p-6 sm:p-8 rounded-3xl">
             <p class="italic mb-6">
               "The instructors are industry experts. I learned Digital Marketing
               and now manage social media for local businesses."
             </p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-orange-500 rounded-full"></div>
+              <div
+                class="w-10 h-10 bg-orange-500 rounded-full flex-shrink-0"
+              ></div>
               <div>
                 <div class="font-medium">Aisha M. Johnson</div>
                 <div class="text-xs text-gray-400">Class of 2024</div>
@@ -448,33 +485,39 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-24 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-16">
+    <!-- ══════════════════════════════ CONTACT ══════════════════════════════ -->
+    <section id="contact" class="py-16 md:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
           <div>
-            <h2 class="text-4xl font-bold mb-8">Get In Touch</h2>
-            <div class="space-y-8">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">
+              Get In Touch
+            </h2>
+            <div class="space-y-6 sm:space-y-8">
               <div class="flex gap-4">
                 <i
-                  class="fas fa-map-marker-alt text-3xl text-orange-500 mt-1"
+                  class="fas fa-map-marker-alt text-2xl sm:text-3xl text-orange-500 mt-1 flex-shrink-0"
                 ></i>
                 <div>
                   <div class="font-medium">5th Street, Sinkor</div>
                   <div class="text-gray-600">
-                    Tubman Boulevard Monrovia, Liberia
+                    Tubman Boulevard, Monrovia, Liberia
                   </div>
                 </div>
               </div>
               <div class="flex gap-4">
-                <i class="fas fa-phone text-3xl text-orange-500 mt-1"></i>
+                <i
+                  class="fas fa-phone text-2xl sm:text-3xl text-orange-500 mt-1 flex-shrink-0"
+                ></i>
                 <div>
                   <div class="font-medium">+231 77 537 9265</div>
-                  <div class="text-gray-600">Mon - sat, 8am - 5pm</div>
+                  <div class="text-gray-600">Mon – Sat, 8am – 5pm</div>
                 </div>
               </div>
               <div class="flex gap-4">
-                <i class="fas fa-envelope text-3xl text-orange-500 mt-1"></i>
+                <i
+                  class="fas fa-envelope text-2xl sm:text-3xl text-orange-500 mt-1 flex-shrink-0"
+                ></i>
                 <div>
                   <div class="font-medium">ultraacademy17@gmail.com</div>
                   <div class="text-gray-600">Admissions &amp; Inquiries</div>
@@ -483,13 +526,16 @@
             </div>
           </div>
 
-          <form id="contactForm" class="bg-white p-10 rounded-3xl shadow">
-            <div class="grid grid-cols-2 gap-6">
+          <form
+            id="contactForm"
+            class="bg-white p-6 sm:p-10 rounded-3xl shadow"
+          >
+            <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label class="block text-sm mb-2 font-medium">First Name</label>
                 <input
                   type="text"
-                  class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                  class="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
                   required
                 />
               </div>
@@ -497,25 +543,25 @@
                 <label class="block text-sm mb-2 font-medium">Last Name</label>
                 <input
                   type="text"
-                  class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                  class="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
                   required
                 />
               </div>
             </div>
-            <div class="mt-6">
+            <div class="mt-5 sm:mt-6">
               <label class="block text-sm mb-2 font-medium">Email</label>
               <input
                 type="email"
-                class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                class="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
                 required
               />
             </div>
-            <div class="mt-6">
+            <div class="mt-5 sm:mt-6">
               <label class="block text-sm mb-2 font-medium"
                 >Interested Program</label
               >
               <select
-                class="w-full border rounded-2xl px-5 py-4 focus:outline-none focus:border-orange-400"
+                class="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
               >
                 <option>Website Development</option>
                 <option>Digital Marketing</option>
@@ -526,7 +572,7 @@
             </div>
             <button
               type="submit"
-              class="mt-10 w-full py-5 bg-black text-white rounded-3xl font-semibold hover:bg-orange-600 transition-colors"
+              class="mt-8 sm:mt-10 w-full py-4 sm:py-5 bg-black text-white rounded-3xl font-semibold hover:bg-orange-600 transition-colors"
             >
               Send Message
             </button>
@@ -535,25 +581,27 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black text-white py-16">
-      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+    <footer class="bg-black text-white py-12 md:py-16">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+      >
         <div>
-          <div class="flex items-center gap-3 mb-6">
+          <div class="flex items-center gap-3 mb-5">
             <img
               src="./images/ua-ogo.jpeg"
               alt="ultra-logo"
-              class="w-28 h-12 object-cover"
+              class="h-10 w-auto object-contain"
             />
           </div>
-          <p class="text-white-400">
+          <p class="text-gray-400">
             Building Liberia's next generation of professionals. Gain, improve
             and produce.
           </p>
         </div>
 
         <div>
-          <h4 class="font-semibold mb-6">Quick Links</h4>
+          <h4 class="font-semibold mb-5">Quick Links</h4>
           <ul class="space-y-3 text-gray-400">
             <li><a href="#" class="hover:text-white">Admissions</a></li>
             <li><a href="#" class="hover:text-white">Scholarships</a></li>
@@ -563,11 +611,11 @@
         </div>
 
         <div>
-          <h4 class="font-semibold mb-6">Programs</h4>
+          <h4 class="font-semibold mb-5">Programs</h4>
           <ul class="space-y-3 text-gray-400">
             <li>
               <a
-                href="#"
+                href="#courses"
                 onclick="navigateTo('courses')"
                 class="hover:text-white"
                 >IT Programs</a
@@ -575,7 +623,7 @@
             </li>
             <li>
               <a
-                href="#"
+                href="#courses"
                 onclick="navigateTo('courses')"
                 class="hover:text-white"
                 >Business Programs</a
@@ -586,24 +634,28 @@
         </div>
 
         <div>
-          <h4 class="font-semibold mb-6">Connect</h4>
+          <h4 class="font-semibold mb-5">Connect</h4>
           <div class="flex flex-col gap-4">
             <a
               href="https://web.facebook.com/profile.php?id=61576348242062"
               target="_blank"
+              rel="noopener"
               class="flex items-center gap-2 hover:text-orange-500"
             >
               <i class="fab fa-facebook text-xl"></i>
               <span class="text-xs text-gray-400">Ultra Academy Liberia</span>
             </a>
-
             <a href="#" class="flex items-center gap-2 hover:text-orange-500">
               <i class="fab fa-linkedin text-xl"></i>
             </a>
-
-            <a href="#" class="flex items-center gap-2 hover:text-orange-500">
+            <a
+              href="https://wa.me/231775379265"
+              target="_blank"
+              rel="noopener"
+              class="flex items-center gap-2 hover:text-orange-500"
+            >
               <i class="fab fa-whatsapp text-xl"></i>
-              <span class="text-xs text-gray-400">+23177 537 9265</span>
+              <span class="text-xs text-gray-400">+231 77 537 9265</span>
             </a>
           </div>
           <p class="mt-8 text-xs text-gray-500">
@@ -613,35 +665,38 @@
       </div>
     </footer>
 
-    <!-- COURSE DETAIL MODAL -->
+    <!-- ══════════════════════════════ COURSE DETAIL MODAL ══════════════════════════════ -->
     <div
       id="courseModal"
-      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]"
+      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4"
     >
-      <div class="bg-white max-w-2xl w-full mx-4 rounded-3xl overflow-hidden">
-        <div class="p-8">
-          <div class="flex justify-between items-start">
+      <div
+        class="bg-white max-w-2xl w-full rounded-3xl overflow-hidden max-h-[90vh] overflow-y-auto"
+      >
+        <div class="p-6 sm:p-8">
+          <div class="flex justify-between items-start gap-4">
             <div>
               <span
                 id="modalCategory"
                 class="px-4 py-1 text-xs font-medium bg-orange-100 text-orange-700 rounded-full"
               ></span>
-              <h3 id="modalTitle" class="text-3xl font-bold mt-4"></h3>
+              <h3
+                id="modalTitle"
+                class="text-2xl sm:text-3xl font-bold mt-4"
+              ></h3>
             </div>
             <button
               onclick="closeModal()"
-              class="text-4xl leading-none text-gray-400 hover:text-black"
+              class="text-4xl leading-none text-gray-400 hover:text-black flex-shrink-0"
             >
               ×
             </button>
           </div>
-
           <div
             id="modalDescription"
-            class="mt-8 text-gray-600 leading-relaxed"
+            class="mt-6 sm:mt-8 text-gray-600 leading-relaxed"
           ></div>
-
-          <div class="grid grid-cols-3 gap-6 my-10 text-center">
+          <div class="grid grid-cols-3 gap-6 my-8 sm:my-10 text-center">
             <div>
               <div class="text-orange-600 font-mono text-2xl font-bold">12</div>
               <div class="text-xs uppercase">Weeks</div>
@@ -657,10 +712,9 @@
               <div class="text-xs uppercase">Tuition</div>
             </div>
           </div>
-
           <button
             onclick="enrollFromModal()"
-            class="w-full py-6 bg-orange-600 text-white rounded-3xl font-semibold text-lg"
+            class="w-full py-5 sm:py-6 bg-orange-600 text-white rounded-3xl font-semibold text-lg"
           >
             Enroll in this Course
           </button>
@@ -668,13 +722,15 @@
       </div>
     </div>
 
-    <!-- ENROLL MODAL -->
+    <!-- ══════════════════════════════ ENROLL MODAL ══════════════════════════════ -->
     <div
       id="enrollModal"
-      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]"
+      class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4"
     >
-      <div class="bg-white max-w-lg w-full mx-4 rounded-3xl p-10">
-        <h3 class="text-3xl font-bold text-center mb-8">
+      <div
+        class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto"
+      >
+        <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">
           Start Your Application
         </h3>
         <form onsubmit="submitEnroll(event)">
@@ -682,40 +738,40 @@
             type="text"
             id="enrollName"
             placeholder="Full Name"
-            class="w-full mb-5 border rounded-2xl px-6 py-5"
+            class="w-full mb-4 sm:mb-5 border rounded-2xl px-5 sm:px-6 py-4 sm:py-5 focus:outline-none focus:border-orange-400"
             required
           />
           <input
             type="email"
             id="enrollEmail"
             placeholder="Email Address"
-            class="w-full mb-5 border rounded-2xl px-6 py-5"
+            class="w-full mb-4 sm:mb-5 border rounded-2xl px-5 sm:px-6 py-4 sm:py-5 focus:outline-none focus:border-orange-400"
             required
           />
           <input
             type="tel"
             id="enrollPhone"
             placeholder="Phone Number"
-            class="w-full mb-8 border rounded-2xl px-6 py-5"
+            class="w-full mb-6 sm:mb-8 border rounded-2xl px-5 sm:px-6 py-4 sm:py-5 focus:outline-none focus:border-orange-400"
             required
           />
-
           <button
             type="submit"
-            class="w-full py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl font-bold text-lg"
+            class="w-full py-5 sm:py-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-3xl font-bold text-lg"
           >
             SUBMIT APPLICATION
           </button>
         </form>
-        <button onclick="hideEnrollModal()" class="mt-4 text-gray-500 w-full">
+        <button
+          onclick="hideEnrollModal()"
+          class="mt-4 text-gray-500 w-full py-2 hover:text-gray-700"
+        >
           Cancel
         </button>
       </div>
     </div>
 
     <script>
-      // Tailwind script already included
-
       const courses = [
         {
           id: 1,
@@ -723,7 +779,7 @@
           category: "it",
           description:
             "Master the basics of computing, operating systems, and essential software tools for professional environments.",
-          icon: "fa-keyboard",
+          image: "./images/computer-fundamentals.jpeg",
         },
         {
           id: 2,
@@ -731,7 +787,7 @@
           category: "it",
           description:
             "Learn Adobe Photoshop, Illustrator, and design principles to create stunning visual content.",
-          icon: "fa-palette",
+          image: "./images/graphic-design.jpeg",
         },
         {
           id: 3,
@@ -739,7 +795,7 @@
           category: "it",
           description:
             "Build modern, responsive websites using HTML, CSS, JavaScript, and WordPress.",
-          icon: "fa-globe",
+          image: "./images/web-dev.jpeg",
         },
         {
           id: 4,
@@ -747,15 +803,15 @@
           category: "it",
           description:
             "Master SEO, social media advertising, content marketing, and Google Analytics.",
-          icon: "fa-chart-line",
+          image: "./images/digital-marketting.jpeg",
         },
         {
           id: 5,
-          title: "Programming with Java & Python",
+          title: "Programming with Python",
           category: "it",
           description:
             "Learn two of the most in-demand programming languages with practical projects.",
-          icon: "fa-code",
+          image: "./images/python.jpeg",
         },
         {
           id: 6,
@@ -763,7 +819,7 @@
           category: "it",
           description:
             "Design, implement, and manage databases using MySQL and PostgreSQL.",
-          icon: "fa-database",
+          image: "./images/relational-database.jpeg",
         },
         {
           id: 7,
@@ -771,7 +827,7 @@
           category: "it",
           description:
             "Advanced formulas, pivot tables, dashboards, and data visualization techniques.",
-          icon: "fa-file-excel",
+          image: "./images/excel.jpeg",
         },
         {
           id: 8,
@@ -779,9 +835,8 @@
           category: "it",
           description:
             "Learn accounting software for small and medium businesses.",
-          icon: "fa-calculator",
+          image: "./images/quick-books.jpg",
         },
-        // Business Courses
         {
           id: 9,
           title: "Project Management",
@@ -837,52 +892,41 @@
         container.innerHTML = "";
 
         filteredCourses.forEach((course) => {
-          const cardHTML = `
-                    <div onclick="showCourseDetail(${course.id})" class="course-card bg-white border border-gray-100 rounded-3xl overflow-hidden cursor-pointer group">
-                        <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white text-6xl">
-                            <i class="fas ${course.icon}"></i>
-                        </div>
-                        <div class="p-7">
-                            <span class="uppercase text-[10px] tracking-widest font-mono ${course.category === "it" ? "text-blue-600" : "text-emerald-600"}">
-                                ${course.category === "it" ? "INFORMATION TECHNOLOGY" : "BUSINESS"}
-                            </span>
-                            <h4 class="font-semibold text-xl mt-2 mb-3 group-hover:text-orange-600 transition-colors">${course.title}</h4>
-                            <p class="text-gray-600 line-clamp-3 text-sm">${course.description}</p>
-                            <div class="mt-6 flex justify-between items-center">
-                                <span class="text-xs font-medium bg-gray-100 px-4 py-2 rounded-3xl">Certificate</span>
-                                <span class="text-orange-600 text-sm font-medium flex items-center gap-1">
-                                    Learn more <i class="fas fa-arrow-right text-xs"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-          container.innerHTML += cardHTML;
+          // If the course has a custom image, show it; otherwise show the icon gradient
+          const bannerHTML = course.image
+            ? `<img src="${course.image}" alt="${course.title}" style="width:100%;height:100%;object-fit:cover;display:block;"/>`
+            : `<div class="card-banner-icon"><i class="fas ${course.icon}"></i></div>`;
+
+          container.innerHTML += `
+            <div onclick="showCourseDetail(${course.id})" class="course-card bg-white border border-gray-100 rounded-3xl overflow-hidden cursor-pointer group flex flex-col">
+              <div class="card-banner">${bannerHTML}</div>
+              <div class="p-5 sm:p-7 flex flex-col flex-1">
+                <span class="uppercase text-[10px] tracking-widest font-mono ${course.category === "it" ? "text-blue-600" : "text-emerald-600"}">
+                  ${course.category === "it" ? "INFORMATION TECHNOLOGY" : "BUSINESS"}
+                </span>
+                <h4 class="font-semibold text-lg sm:text-xl mt-2 mb-3 group-hover:text-orange-600 transition-colors">${course.title}</h4>
+                <p class="text-gray-600 line-clamp-3 text-sm flex-1">${course.description}</p>
+                <div class="mt-5 sm:mt-6 flex justify-between items-center">
+                  <span class="text-xs font-medium bg-gray-100 px-4 py-2 rounded-3xl">Certificate</span>
+                  <span class="text-orange-600 text-sm font-medium flex items-center gap-1">Learn more <i class="fas fa-arrow-right text-xs"></i></span>
+                </div>
+              </div>
+            </div>`;
         });
       }
 
       function filterCategory(cat) {
-        // Reset active states
-        document.querySelectorAll(".tab-button").forEach((btn) => {
-          btn.classList.remove("active", "bg-white", "shadow-sm");
-        });
-
-        if (cat === "all") {
-          document
-            .getElementById("tab-all")
-            .classList.add("active", "bg-white", "shadow-sm");
-          renderCourses(courses);
-        } else if (cat === "it") {
-          document
-            .getElementById("tab-it")
-            .classList.add("active", "bg-white", "shadow-sm");
-          renderCourses(courses.filter((c) => c.category === "it"));
-        } else if (cat === "business") {
-          document
-            .getElementById("tab-business")
-            .classList.add("active", "bg-white", "shadow-sm");
-          renderCourses(courses.filter((c) => c.category === "business"));
-        }
+        document
+          .querySelectorAll(".tab-button")
+          .forEach((btn) =>
+            btn.classList.remove("active", "bg-white", "shadow-sm"),
+          );
+        document
+          .getElementById("tab-" + cat)
+          .classList.add("active", "bg-white", "shadow-sm");
+        renderCourses(
+          cat === "all" ? courses : courses.filter((c) => c.category === cat),
+        );
       }
 
       let currentCourse = null;
@@ -890,28 +934,26 @@
       function showCourseDetail(id) {
         currentCourse = courses.find((c) => c.id === id);
         if (!currentCourse) return;
-
         document.getElementById("modalTitle").textContent = currentCourse.title;
         document.getElementById("modalCategory").textContent =
           currentCourse.category === "it" ? "IT SKILLS" : "BUSINESS";
         document.getElementById("modalDescription").innerHTML = `
-                <p>${currentCourse.description}</p>
-                <ul class="list-disc pl-5 mt-6 space-y-2 text-sm">
-                    <li>Duration: 3-6 months (part-time available)</li>
-                    <li>Weekly classes: 2 sessions</li>
-                    <li>Final capstone project</li>
-                    <li>Internship opportunities</li>
-                    <li>Industry-recognized certificate</li>
-                </ul>
-            `;
+          <p>${currentCourse.description}</p>
+          <ul class="list-disc pl-5 mt-6 space-y-2 text-sm">
+            <li>Duration: 3–6 months (part-time available)</li>
+            <li>Weekly classes: 2 sessions</li>
+            <li>Final capstone project</li>
+            <li>Internship opportunities</li>
+            <li>Industry-recognized certificate</li>
+          </ul>`;
         document.getElementById("courseModal").classList.remove("hidden");
         document.getElementById("courseModal").classList.add("flex");
       }
 
       function closeModal() {
-        const modal = document.getElementById("courseModal");
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
+        const m = document.getElementById("courseModal");
+        m.classList.add("hidden");
+        m.classList.remove("flex");
       }
 
       function showEnrollModal() {
@@ -920,16 +962,14 @@
       }
 
       function hideEnrollModal() {
-        const modal = document.getElementById("enrollModal");
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
+        const m = document.getElementById("enrollModal");
+        m.classList.add("hidden");
+        m.classList.remove("flex");
       }
 
       function enrollFromModal() {
         closeModal();
-        setTimeout(() => {
-          showEnrollModal();
-        }, 600);
+        setTimeout(showEnrollModal, 600);
       }
 
       function submitEnroll(e) {
@@ -945,14 +985,13 @@
       }
 
       function navigateTo(section) {
-        document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+        const el = document.getElementById(section);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }
 
-      // Initialize
       window.onload = function () {
-        renderCourses(courses);
+        filterCategory("all");
 
-        // Form submission
         const contactForm = document.getElementById("contactForm");
         if (contactForm) {
           contactForm.addEventListener("submit", function (e) {
@@ -962,25 +1001,17 @@
           });
         }
 
-        // Keyboard escape support
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") {
-            const modals = document.querySelectorAll(
-              "#courseModal, #enrollModal",
-            );
-            modals.forEach((modal) => {
-              if (!modal.classList.contains("hidden")) {
-                modal.classList.add("hidden");
-                modal.classList.remove("flex");
+            ["courseModal", "enrollModal"].forEach((id) => {
+              const m = document.getElementById(id);
+              if (!m.classList.contains("hidden")) {
+                m.classList.add("hidden");
+                m.classList.remove("flex");
               }
             });
           }
         });
-
-        console.log(
-          "%cUltra Academy Liberia website loaded successfully!",
-          "color: #FF6600; font-family: monospace",
-        );
       };
     </script>
   </body>
