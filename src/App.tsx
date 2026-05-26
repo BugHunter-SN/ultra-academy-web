@@ -4,7 +4,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import About from './components/About';
+import Staff from './components/Staff';
 import Courses from './components/Courses';
+import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import CourseModal from './components/CourseModal';
@@ -20,14 +22,11 @@ export default function App() {
       <Navbar onEnroll={() => setEnrollOpen(true)} />
 
       <Routes>
-        <Route path="/" element={
-          <Hero
-            onBrowseCourses={() => {}}
-            onEnroll={() => setEnrollOpen(true)}
-          />
-        } />
+        <Route path="/"             element={<Hero onEnroll={() => setEnrollOpen(true)} />} />
         <Route path="/about"        element={<About />} />
+        <Route path="/staff"        element={<Staff />} />
         <Route path="/courses"      element={<Courses onCourseClick={setSelectedCourse} />} />
+        <Route path="/gallery"      element={<Gallery />} />
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact"      element={<Contact />} />
       </Routes>

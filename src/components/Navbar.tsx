@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   onEnroll: () => void;
@@ -7,12 +7,13 @@ interface NavbarProps {
 
 export default function Navbar({ onEnroll }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const navigate = useNavigate();
 
   const navItems = [
     { label: 'Home',         path: '/' },
     { label: 'About',        path: '/about' },
+    { label: 'Staff',        path: '/staff' },
     { label: 'Courses',      path: '/courses' },
+    { label: 'Gallery',      path: '/gallery' },
     { label: 'Testimonials', path: '/testimonials' },
     { label: 'Contact',      path: '/contact' },
   ];
@@ -20,6 +21,7 @@ export default function Navbar({ onEnroll }: NavbarProps) {
   return (
     <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 flex justify-between items-center">
+
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img

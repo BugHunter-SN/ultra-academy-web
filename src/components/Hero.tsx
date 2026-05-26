@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 interface HeroProps {
-  onBrowseCourses: () => void;
   onEnroll: () => void;
 }
 
-export default function Hero({ onBrowseCourses, onEnroll }: HeroProps) {
+export default function Hero({ onEnroll }: HeroProps) {
+  const navigate = useNavigate();
+
   return (
     <section id="home" className="hero-bg text-white min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 w-full">
@@ -41,7 +44,7 @@ export default function Hero({ onBrowseCourses, onEnroll }: HeroProps) {
           {/* CTAs */}
           <div className="hero-fade flex flex-wrap gap-3 sm:gap-4 mb-12 sm:mb-16">
             <button
-              onClick={onBrowseCourses}
+              onClick={() => navigate('/courses')}
               className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-orange-600 font-semibold rounded-2xl hover:bg-orange-50 flex items-center gap-3 text-base sm:text-lg transition-all"
             >
               Browse Courses <i className="fas fa-arrow-right" />
