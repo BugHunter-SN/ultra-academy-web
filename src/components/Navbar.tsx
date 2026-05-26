@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   onEnroll: () => void;
@@ -6,48 +7,42 @@ interface NavbarProps {
 
 export default function Navbar({ onEnroll }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navigateTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const navigate = useNavigate();
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'About', id: 'about' },
-    { label: 'Staff', id: 'staff' },
-    { label: 'Courses', id: 'courses' },
-    { label: 'Gallery', id: 'gallery' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Home',         path: '/' },
+    { label: 'About',        path: '/about' },
+    { label: 'Courses',      path: '/courses' },
+    { label: 'Testimonials', path: '/testimonials' },
+    { label: 'Contact',      path: '/contact' },
   ];
 
   return (
     <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img
-            src="/images/ua-ogo.jpeg"
+            src="/images/ua-logo.jpeg"
             alt="Ultra Academy Logo"
             className="h-7 sm:h-8 w-auto rounded object-contain"
           />
           <div>
-            <span className="text-sm sm:text-base font-bold tracking-tight">
-              Ultra Academy
-            </span>
+            <span className="text-sm sm:text-base font-bold tracking-tight">Ultra Academy</span>
             <span className="text-[10px] block -mt-0.5 text-orange-600 font-medium">LIBERIA</span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => navigateTo(item.id)}
-              className="nav-link text-gray-700 hover:text-orange-600"
+            <Link
+              key={item.path}
+              to={item.path}
+              className="text-gray-700 hover:text-orange-600 transition-colors"
             >
               {item.label}
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -74,13 +69,14 @@ export default function Navbar({ onEnroll }: NavbarProps) {
         <div className="md:hidden bg-white border-t">
           <div className="px-6 py-6 flex flex-col gap-4 text-base">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => { navigateTo(item.id); setMobileOpen(false); }}
-                className="text-left hover:text-orange-600"
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className="text-left hover:text-orange-600 transition-colors"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
             <button
               onClick={() => { onEnroll(); setMobileOpen(false); }}
