@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-5">
-            <img src="/images/ua-ogo.jpeg" alt="Ultra Academy Logo" className="h-10 w-auto object-contain rounded" />
+            <img src="/images/ua-logo.jpeg" alt="Ultra Academy Logo" className="h-10 w-auto object-contain rounded" />
           </div>
           <p className="text-gray-400 text-sm">
             Building Liberia's next generation of professionals.<br />
