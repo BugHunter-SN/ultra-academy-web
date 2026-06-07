@@ -51,8 +51,8 @@ export default function CourseModal({ course, onClose, onEnroll }: CourseModalPr
 
           <div className="grid grid-cols-3 gap-6 my-8 sm:my-10 text-center">
             {[
-              { value: '12', label: 'Weeks' },
-              { value: '3x', label: 'Per Week' },
+              { value: '10', label: 'Weeks' },
+              { value: '2x', label: 'Per Week' },
               { value: '$80', label: 'Tuition' },
             ].map((s) => (
               <div key={s.label}>
