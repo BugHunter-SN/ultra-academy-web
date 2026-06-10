@@ -8,6 +8,7 @@ import Staff from './components/Staff';
 import Courses from './components/Courses';
 import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
+import WhatWeDo from './components/WhatWeDo';
 import Contact from './components/Contact';
 import CourseModal from './components/CourseModal';
 import EnrollModal from './components/EnrollModal';
@@ -30,7 +31,7 @@ export default function App() {
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact"      element={<Contact />} />
       </Routes>
-
+      <WhatWeDo/>
       <Footer />
 
       {selectedCourse && (

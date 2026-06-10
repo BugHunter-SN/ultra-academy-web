@@ -175,7 +175,6 @@ export default function Hero({ onEnroll }: HeroProps) {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
