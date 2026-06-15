@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface NavbarProps {
   onEnroll: () => void;
@@ -7,6 +7,7 @@ interface NavbarProps {
 
 export default function Navbar({ onEnroll }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { label: 'Home',         path: '/' },
@@ -17,6 +18,9 @@ export default function Navbar({ onEnroll }: NavbarProps) {
     { label: 'Testimonials', path: '/testimonials' },
     { label: 'Contact',      path: '/contact' },
   ];
+
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
   return (
     <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
@@ -41,7 +45,11 @@ export default function Navbar({ onEnroll }: NavbarProps) {
             <Link
               key={item.path}
               to={item.path}
-              className="text-gray-700 hover:text-orange-600 transition-colors"
+              className={`relative pb-1 transition-colors ${
+                isActive(item.path)
+                  ? 'text-orange-600 font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-orange-600 after:rounded-full'
+                  : 'text-gray-700 hover:text-orange-600'
+              }`}
             >
               {item.label}
             </Link>
@@ -61,7 +69,7 @@ export default function Navbar({ onEnroll }: NavbarProps) {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden text-xl p-1"
           >
-            <i className="fas fa-bars" />
+            <i className={`fas ${mobileOpen ? 'fa-times' : 'fa-bars'}`} />
           </button>
         </div>
       </div>
@@ -75,8 +83,15 @@ export default function Navbar({ onEnroll }: NavbarProps) {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className="text-left hover:text-orange-600 transition-colors"
+                className={`text-left font-medium transition-colors flex items-center gap-2 ${
+                  isActive(item.path)
+                    ? 'text-orange-600'
+                    : 'text-gray-700 hover:text-orange-600'
+                }`}
               >
+                {isActive(item.path) && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-600 inline-block" />
+                )}
                 {item.label}
               </Link>
             ))}
