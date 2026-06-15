@@ -13,11 +13,19 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
+        <div className="text-center mb-12">
+          <span className="text-orange-600 font-semibold text-sm uppercase tracking-widest">Reach Us</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mt-2">Get In Touch</h2>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
-          {/* Info */}
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Get In Touch</h2>
-            <div className="space-y-6 sm:space-y-8">
+
+          {/* Left — info + form */}
+          <div className="flex flex-col gap-8">
+
+            {/* Contact details */}
+            <div className="space-y-6">
               <div className="flex gap-4">
                 <i className="fas fa-map-marker-alt text-2xl sm:text-3xl text-orange-500 mt-1 flex-shrink-0" />
                 <div>
@@ -40,53 +48,66 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-10 rounded-3xl shadow">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                <div>
+                  <label className="block text-sm mb-2 font-medium">First Name</label>
+                  <input
+                    type="text"
+                    className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm mb-2 font-medium">Last Name</label>
+                  <input
+                    type="text"
+                    className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="mt-5 sm:mt-6">
+                <label className="block text-sm mb-2 font-medium">Email</label>
+                <input
+                  type="email"
+                  className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
+                  required
+                />
+              </div>
+              <div className="mt-5 sm:mt-6">
+                <label className="block text-sm mb-2 font-medium">Message</label>
+                <textarea
+                  rows={4}
+                  className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400 resize-none"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="mt-8 sm:mt-10 w-full py-4 sm:py-5 bg-black text-white rounded-3xl font-semibold hover:bg-orange-600 transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-10 rounded-3xl shadow">
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <label className="block text-sm mb-2 font-medium">First Name</label>
-                <input
-                  type="text"
-                  className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-2 font-medium">Last Name</label>
-                <input
-                  type="text"
-                  className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
-                  required
-                />
-              </div>
-            </div>
-            <div className="mt-5 sm:mt-6">
-              <label className="block text-sm mb-2 font-medium">Email</label>
-              <input
-                type="email"
-                className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400"
-                required
-              />
-            </div>
-            <div className="mt-5 sm:mt-6">
-              <label className="block text-sm mb-2 font-medium">Interested Program</label>
-              <select className="w-full border rounded-2xl px-4 sm:px-5 py-3 sm:py-4 focus:outline-none focus:border-orange-400">
-                <option>Website Development</option>
-                <option>Digital Marketing</option>
-                <option>Project Management</option>
-                <option>Human Resource Management</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              className="mt-8 sm:mt-10 w-full py-4 sm:py-5 bg-black text-white rounded-3xl font-semibold hover:bg-orange-600 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+          {/* Right — Google Map */}
+          <div className="rounded-3xl overflow-hidden shadow-lg h-full min-h-[500px]">
+            <iframe
+              title="Ultra Academy Liberia Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1234567890123!2d-10.7894865!3d6.2939506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf0a0364d327625d%3A0x1a9df16ecdd3f5f3!2sUltra%20Academy-Liberia!5e0!3m2!1sen!2slr!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: '500px' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
         </div>
       </div>
     </section>
