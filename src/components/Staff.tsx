@@ -137,9 +137,6 @@ export default function Staff() {
         {/* Section header */}
         <header className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-600 sm:text-sm">
-            <span className="h-px w-6 bg-orange-500" />
-            Our People
-            <span className="h-px w-6 bg-orange-500" />
           </span>
 
           <h1
