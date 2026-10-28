@@ -5,7 +5,7 @@ const staffMembers = [
     name: 'Jonah K. Jerue',
     title: 'Chief Executive Officer (CEO)',
     department: 'Executive Leadership',
-    image: '/images/staff-1.jpeg',
+    image: '/images/people/jonah-k-jerue-ceo.jpeg',
   },
   {
    name: 'Darious N. Weh',
@@ -67,6 +67,18 @@ const staffMembers = [
     title: 'Admin Assistant',
     department: 'Staff',
     image: '/images/staff-8.jpeg',
+  },
+  {
+    name: 'S. Anthony Gartor',
+    title: 'Procument and Contract Management Lecturer',
+    department: 'Staff',
+    image: '/images/people/s-anthony-gartor.jpeg',
+  },
+    {
+    name: 'Emmanuel H. Hills',
+    title: 'Disaster and Risk Management Lecturer',
+    department: 'Staff',
+    image: '/images/people/emmanuel-h-hills.jpeg',
   },
 ];
 
