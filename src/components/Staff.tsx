@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const staffMembers = [
   {
-    name: 'Jonah K. Jerue',
+    name: 'Jonah K. Jerrue',
     title: 'Chief Executive Officer (CEO)',
     department: 'Executive Leadership',
     image: '/images/people/jonah-k-jerue-ceo.jpeg',
@@ -32,8 +32,20 @@ const staffMembers = [
     image: '/images/people/mercy-t-curley.jpg',
   },
   {
+    name: 'Prosper Alain Kpan',
+    title: 'Program Director',
+    department: 'Programs',
+    image: '/images/people/prosper-a-kpan.jpg',
+  },
+    {
+    name: 'Samuel E. H. Nimely',
+    title: 'ICT Innovator',
+    department: 'Information Technology',
+    image: '/images/staff-6.jpeg',
+  },
+  {
     name: 'Peter Brown',
-    title: 'Admin',
+    title: 'Marketting and Communication Officer',
     department: 'Faculty',
     image: '/images/people/staff3',
   },
@@ -43,25 +55,7 @@ const staffMembers = [
     department: 'Faculty',
     image: '/images/people/christian-n-bai.jpg',
   },
-  {
-    name: 'Prosper Alain Kpan',
-    title: 'Program Director',
-    department: 'Programs',
-    image: '/images/people/prosper-a-kpan.jpg',
-  },
-   {
-    name: 'Samuel E. H. Nimely',
-    title: 'ICT Innovator',
-    department: 'Information Technology',
-    image: '/images/staff-6.jpeg',
-  },
-  {
-    name: 'David Swen',
-    title: 'Program Director',
-    department: 'Faculty',
-    image: '/images/staff-7.jpeg',
-  },
- 
+
   {
     name: 'Mary Z. Hunter',
     title: 'Admin Assistant',
